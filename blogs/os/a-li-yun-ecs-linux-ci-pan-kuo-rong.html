@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>阿里云ECS（Linux）磁盘扩容 | Navy的小屋</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="终有一天，你会感谢今天努力的自己！">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.bdfce470.css" as="style"><link rel="preload" href="/assets/js/app.59b9533f.js" as="script"><link rel="preload" href="/assets/js/3.a6b6d382.js" as="script"><link rel="preload" href="/assets/js/1.0683a2d2.js" as="script"><link rel="preload" href="/assets/js/27.db727cae.js" as="script"><link rel="prefetch" href="/assets/js/10.5275b79e.js"><link rel="prefetch" href="/assets/js/11.62f00861.js"><link rel="prefetch" href="/assets/js/12.bd6399a4.js"><link rel="prefetch" href="/assets/js/13.55a00fdc.js"><link rel="prefetch" href="/assets/js/14.1ff42f47.js"><link rel="prefetch" href="/assets/js/15.09152d42.js"><link rel="prefetch" href="/assets/js/16.42917885.js"><link rel="prefetch" href="/assets/js/17.94bbf5a8.js"><link rel="prefetch" href="/assets/js/18.903382a8.js"><link rel="prefetch" href="/assets/js/19.376b1e9e.js"><link rel="prefetch" href="/assets/js/20.70fb9b16.js"><link rel="prefetch" href="/assets/js/21.caf7d32a.js"><link rel="prefetch" href="/assets/js/22.c5286a92.js"><link rel="prefetch" href="/assets/js/23.ba3749be.js"><link rel="prefetch" href="/assets/js/24.8fbb65f3.js"><link rel="prefetch" href="/assets/js/25.e3317934.js"><link rel="prefetch" href="/assets/js/26.ec552a7d.js"><link rel="prefetch" href="/assets/js/28.5afe29c5.js"><link rel="prefetch" href="/assets/js/29.5ed4b039.js"><link rel="prefetch" href="/assets/js/30.e0f23e63.js"><link rel="prefetch" href="/assets/js/31.6b8a1ff7.js"><link rel="prefetch" href="/assets/js/32.3320f4b0.js"><link rel="prefetch" href="/assets/js/33.13aab927.js"><link rel="prefetch" href="/assets/js/34.c675b1ee.js"><link rel="prefetch" href="/assets/js/35.ecbc4b5e.js"><link rel="prefetch" href="/assets/js/36.e30a4bba.js"><link rel="prefetch" href="/assets/js/37.542b5b52.js"><link rel="prefetch" href="/assets/js/38.ee50525a.js"><link rel="prefetch" href="/assets/js/39.567b10bd.js"><link rel="prefetch" href="/assets/js/4.a8dbded2.js"><link rel="prefetch" href="/assets/js/40.cbf4d68e.js"><link rel="prefetch" href="/assets/js/41.52b38aad.js"><link rel="prefetch" href="/assets/js/42.c658d71f.js"><link rel="prefetch" href="/assets/js/43.9a7cc02d.js"><link rel="prefetch" href="/assets/js/44.eff23aa5.js"><link rel="prefetch" href="/assets/js/45.7bde93f4.js"><link rel="prefetch" href="/assets/js/46.20dd8ea9.js"><link rel="prefetch" href="/assets/js/47.76455274.js"><link rel="prefetch" href="/assets/js/48.787021ec.js"><link rel="prefetch" href="/assets/js/49.e918155c.js"><link rel="prefetch" href="/assets/js/5.0eaeefc8.js"><link rel="prefetch" href="/assets/js/50.a3f37a95.js"><link rel="prefetch" href="/assets/js/51.3ecc9164.js"><link rel="prefetch" href="/assets/js/52.ce64e117.js"><link rel="prefetch" href="/assets/js/53.f57b53b6.js"><link rel="prefetch" href="/assets/js/54.c5076f85.js"><link rel="prefetch" href="/assets/js/55.b35e9f8d.js"><link rel="prefetch" href="/assets/js/56.7765b63b.js"><link rel="prefetch" href="/assets/js/57.a6bef57c.js"><link rel="prefetch" href="/assets/js/58.1e7eb760.js"><link rel="prefetch" href="/assets/js/59.fcb82133.js"><link rel="prefetch" href="/assets/js/6.b1d3a472.js"><link rel="prefetch" href="/assets/js/60.5d16b797.js"><link rel="prefetch" href="/assets/js/61.61dd0fe3.js"><link rel="prefetch" href="/assets/js/62.54701663.js"><link rel="prefetch" href="/assets/js/63.2fcd673d.js"><link rel="prefetch" href="/assets/js/64.277acd97.js"><link rel="prefetch" href="/assets/js/65.ad763dd8.js"><link rel="prefetch" href="/assets/js/66.ef8370bc.js"><link rel="prefetch" href="/assets/js/67.bc744918.js"><link rel="prefetch" href="/assets/js/68.420fd77f.js"><link rel="prefetch" href="/assets/js/69.5810bb4f.js"><link rel="prefetch" href="/assets/js/7.6c04be2b.js"><link rel="prefetch" href="/assets/js/70.61e4687a.js"><link rel="prefetch" href="/assets/js/71.8daa1ddf.js"><link rel="prefetch" href="/assets/js/72.7f8669e7.js"><link rel="prefetch" href="/assets/js/73.6d492142.js"><link rel="prefetch" href="/assets/js/74.539a3e9d.js"><link rel="prefetch" href="/assets/js/75.92befb0d.js"><link rel="prefetch" href="/assets/js/76.5e126236.js"><link rel="prefetch" href="/assets/js/77.f71fed3d.js"><link rel="prefetch" href="/assets/js/78.3a64d09e.js"><link rel="prefetch" href="/assets/js/79.3fe13365.js"><link rel="prefetch" href="/assets/js/8.dfe4310a.js"><link rel="prefetch" href="/assets/js/80.162bcba2.js"><link rel="prefetch" href="/assets/js/81.d3a1c8a7.js"><link rel="prefetch" href="/assets/js/82.933dfb19.js"><link rel="prefetch" href="/assets/js/83.de7565ba.js"><link rel="prefetch" href="/assets/js/84.c98c055b.js"><link rel="prefetch" href="/assets/js/85.50ae9520.js"><link rel="prefetch" href="/assets/js/86.19d3baf7.js"><link rel="prefetch" href="/assets/js/87.25e402dd.js"><link rel="prefetch" href="/assets/js/88.8d08e30a.js"><link rel="prefetch" href="/assets/js/89.b4c093f9.js"><link rel="prefetch" href="/assets/js/9.42913603.js"><link rel="prefetch" href="/assets/js/90.3a48cd57.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.bdfce470.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-2d5f533b><div data-v-2d5f533b><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-2d5f533b data-v-2d5f533b><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-2d5f533b data-v-2d5f533b><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>Navy的小屋</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>Navy</span>
+            
+          <!---->
+          2021
+        </a></span></div></div> <div class="hide" data-v-2d5f533b><header class="navbar" data-v-2d5f533b><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo-green-1000.png" alt="Navy的小屋" class="logo"> <span class="site-name">Navy的小屋</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Java/" class="nav-link"><i class="iconfont undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Test/" class="nav-link"><i class="iconfont undefined"></i>
+  Test
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Dubbo/" class="nav-link"><i class="iconfont undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring/" class="nav-link"><i class="iconfont undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/categories/OS/" class="nav-link"><i class="iconfont undefined"></i>
+  OS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/architecture/" class="nav-link"><i class="iconfont undefined"></i>
+  architecture
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Database/" class="nav-link"><i class="iconfont undefined"></i>
+  Database
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Frontend/" class="nav-link"><i class="iconfont undefined"></i>
+  Frontend
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Middleware/" class="nav-link"><i class="iconfont undefined"></i>
+  Middleware
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Network/" class="nav-link"><i class="iconfont undefined"></i>
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Ops/" class="nav-link"><i class="iconfont undefined"></i>
+  Ops
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Other/" class="nav-link"><i class="iconfont undefined"></i>
+  Other
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/docs/Elastic Stack/000、概览.html" class="nav-link"><i class="iconfont reco-juejin"></i>
+  Elastic Stack
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-blog"></i>
+      架构之路
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/architecture/dp/" class="nav-link"><i class="iconfont reco-document"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/docs/architecture/resources/" class="nav-link"><i class="iconfont reco-document"></i>
+  源码分析篇
+</a></li><li class="dropdown-item"><!----> <a href="/docs/architecture/distribution/" class="nav-link"><i class="iconfont reco-document"></i>
+  分布式与高并发
+</a></li><li class="dropdown-item"><!----> <a href="/docs/architecture/microservice/" class="nav-link"><i class="iconfont reco-document"></i>
+  微服务架构设计
+</a></li><li class="dropdown-item"><!----> <a href="/docs/architecture/dockers/" class="nav-link"><i class="iconfont reco-document"></i>
+  容器化技术
+</a></li><li class="dropdown-item"><!----> <a href="/docs/architecture/optimize/" class="nav-link"><i class="iconfont reco-document"></i>
+  性能优化
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      联系我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/qknavy" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-2d5f533b></div> <aside class="sidebar" data-v-2d5f533b><div class="personal-info-wrapper" data-v-ca798c94 data-v-2d5f533b><img src="/logo-green-1000.png" alt="author-avatar" class="personal-img" data-v-ca798c94> <h3 class="name" data-v-ca798c94>
+    Navy
+  </h3> <div class="num" data-v-ca798c94><div data-v-ca798c94><h3 data-v-ca798c94>40</h3> <h6 data-v-ca798c94>文章</h6></div> <div data-v-ca798c94><h3 data-v-ca798c94>41</h3> <h6 data-v-ca798c94>标签</h6></div></div> <hr data-v-ca798c94></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Java/" class="nav-link"><i class="iconfont undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Test/" class="nav-link"><i class="iconfont undefined"></i>
+  Test
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Dubbo/" class="nav-link"><i class="iconfont undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring/" class="nav-link"><i class="iconfont undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/categories/OS/" class="nav-link"><i class="iconfont undefined"></i>
+  OS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/architecture/" class="nav-link"><i class="iconfont undefined"></i>
+  architecture
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Database/" class="nav-link"><i class="iconfont undefined"></i>
+  Database
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Frontend/" class="nav-link"><i class="iconfont undefined"></i>
+  Frontend
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Middleware/" class="nav-link"><i class="iconfont undefined"></i>
+  Middleware
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Network/" class="nav-link"><i class="iconfont undefined"></i>
+  Network
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Ops/" class="nav-link"><i class="iconfont undefined"></i>
+  Ops
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Other/" class="nav-link"><i class="iconfont undefined"></i>
+  Other
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/docs/Elastic Stack/000、概览.html" class="nav-link"><i class="iconfont reco-juejin"></i>
+  Elastic Stack
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-blog"></i>
+      架构之路
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/architecture/dp/" class="nav-link"><i class="iconfont reco-document"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/docs/architecture/resources/" class="nav-link"><i class="iconfont reco-document"></i>
+  源码分析篇
+</a></li><li class="dropdown-item"><!----> <a href="/docs/architecture/distribution/" class="nav-link"><i class="iconfont reco-document"></i>
+  分布式与高并发
+</a></li><li class="dropdown-item"><!----> <a href="/docs/architecture/microservice/" class="nav-link"><i class="iconfont reco-document"></i>
+  微服务架构设计
+</a></li><li class="dropdown-item"><!----> <a href="/docs/architecture/dockers/" class="nav-link"><i class="iconfont reco-document"></i>
+  容器化技术
+</a></li><li class="dropdown-item"><!----> <a href="/docs/architecture/optimize/" class="nav-link"><i class="iconfont reco-document"></i>
+  性能优化
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      联系我
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/qknavy" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>OS</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blogs/os/" aria-current="page" class="sidebar-link">操作系统相关笔记</a></li><li><a href="/blogs/os/linuxzhi-moreming-ling.html" class="sidebar-link">Linux之More命令</a></li><li><a href="/blogs/os/linuxchang-yong-ming-ling.html" class="sidebar-link">Linux常用命令</a></li><li><a href="/blogs/os/linuxpei-zhi-sshyuan-cheng-deng-lu.html" class="sidebar-link">Linux配置ssh远程登录</a></li><li><a href="/blogs/os/macbookprogen-mu-lu-xia-wu-fa-chuang-jian-wen-jian-jia.html" class="sidebar-link">MacBookPro根目录下无法创建文件夹</a></li><li><a href="/blogs/os/ubuntuju-jue-tong-guo-sshyuan-cheng-deng-lu.html" class="sidebar-link">关于Ubuntu拒绝root用户ssh远程登录</a></li><li><a href="/blogs/os/macchu-mo-ban-shou-shi.html" class="sidebar-link">Mac触摸板手势</a></li><li><a href="/blogs/os/nei-wang-bu-hu-tong-de-yun-fu-wu-qi-an-zhuang-k8s.html" class="sidebar-link">内网不互通的云服务器安装k8s</a></li><li><a href="/blogs/os/a-li-yun-ecs-linux-ci-pan-kuo-rong.html" aria-current="page" class="active sidebar-link">阿里云ECS（Linux）磁盘扩容</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-2d5f533b><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>阿里云ECS（Linux）磁盘扩容</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>Navy</span>
+            
+          <!---->
+          2021
+        </a></span></div></div> <div data-v-2d5f533b><main class="page"><div class="page-title" style="display:none;"><h1 class="title">阿里云ECS（Linux）磁盘扩容</h1> <div data-v-3b7f5bdf><i class="iconfont reco-account" data-v-3b7f5bdf><span data-v-3b7f5bdf>Navy</span></i> <i class="iconfont reco-date" data-v-3b7f5bdf><span data-v-3b7f5bdf>2021-08-02</span></i> <i class="iconfont reco-eye" data-v-3b7f5bdf><span id="/blogs/os/a-li-yun-ecs-linux-ci-pan-kuo-rong.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-3b7f5bdf><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="iconfont reco-tag tags" data-v-3b7f5bdf><span class="tag-item" data-v-3b7f5bdf>磁盘扩容</span><span class="tag-item" data-v-3b7f5bdf>linux</span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h2 id="_1、系统盘扩容"><a href="#_1、系统盘扩容" class="header-anchor">#</a> 1、系统盘扩容</h2> <h3 id="_1-1、阿里云控制台扩容"><a href="#_1-1、阿里云控制台扩容" class="header-anchor">#</a> 1.1、阿里云控制台扩容</h3> <h3 id="_1-2、登录服务器-执行扩容命令"><a href="#_1-2、登录服务器-执行扩容命令" class="header-anchor">#</a> 1.2、登录服务器，执行扩容命令</h3> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>growpart /dev/vda <span class="token number">1</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><blockquote><p>查看分区情况：</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token function">df</span> -Th
+结果：
+/dev/vda1      ext4       50G   32G   16G  <span class="token number">68</span>% /
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>可以看到磁盘的使用情况，并且可以看出已经从扩容到了我们的目标大小</p></blockquote> <h2 id="_2、新增数据盘"><a href="#_2、新增数据盘" class="header-anchor">#</a> 2、新增数据盘</h2> <h3 id="_2-1、阿里云控制台新增数据盘"><a href="#_2-1、阿里云控制台新增数据盘" class="header-anchor">#</a> 2.1、阿里云控制台新增数据盘</h3> <h3 id="_2-2、查看磁盘"><a href="#_2-2、查看磁盘" class="header-anchor">#</a> 2.2、查看磁盘</h3> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token function">fdisk</span> -l
+
+查看结果：
+Disk /dev/vda: <span class="token number">50</span> GiB, <span class="token number">53687091200</span> bytes, <span class="token number">104857600</span> sectors
+Units: sectors of <span class="token number">1</span> * <span class="token number">512</span> <span class="token operator">=</span> <span class="token number">512</span> bytes
+Sector size <span class="token punctuation">(</span>logical/physical<span class="token punctuation">)</span>: <span class="token number">512</span> bytes / <span class="token number">512</span> bytes
+I/O size <span class="token punctuation">(</span>minimum/optimal<span class="token punctuation">)</span>: <span class="token number">512</span> bytes / <span class="token number">512</span> bytes
+Disklabel type: dos
+Disk identifier: 0xd6804155
+
+Device     Boot Start       End   Sectors Size Id Type
+/dev/vda1  *     <span class="token number">2048</span> <span class="token number">104857566</span> <span class="token number">104855519</span>  50G <span class="token number">83</span> Linux
+
+
+Disk /dev/vdb: <span class="token number">20</span> GiB, <span class="token number">21474836480</span> bytes, <span class="token number">41943040</span> sectors
+Units: sectors of <span class="token number">1</span> * <span class="token number">512</span> <span class="token operator">=</span> <span class="token number">512</span> bytes
+Sector size <span class="token punctuation">(</span>logical/physical<span class="token punctuation">)</span>: <span class="token number">512</span> bytes / <span class="token number">512</span> bytes
+I/O size <span class="token punctuation">(</span>minimum/optimal<span class="token punctuation">)</span>: <span class="token number">512</span> bytes / <span class="token number">512</span> bytes
+Disklabel type: dos
+Disk identifier: 0x21e8f771
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>如果没有看到类似下面输出，则说明没有格式化</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>Device     Boot Start      End  Sectors Size Id Type
+/dev/vdb1        <span class="token number">2048</span> <span class="token number">41943039</span> <span class="token number">41940992</span>  20G <span class="token number">83</span> Linux
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="_2-3、执行格式化"><a href="#_2-3、执行格式化" class="header-anchor">#</a> 2.3、执行格式化</h3> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token function">fdisk</span> /dev/vdb
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>操作过程需要经过如下几步：</p> <img src="https://qknavy-blog.oss-cn-huhehaote.aliyuncs.com/images/WX20210802-183435%402x.png" alt="格式化" style="zoom:80%;"> <p>经过5步之后格式化成功</p> <h3 id="_2-4、挂载"><a href="#_2-4、挂载" class="header-anchor">#</a> 2.4、挂载</h3> <ul><li><p>创建挂载目录</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>mkfs.ext4 /dev/vdb1
+
+<span class="token function">mkdir</span> /opt/datas
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div></li> <li><p>挂载</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token function">mount</span> /dev/vdb1 /opt/datas
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>但是这样挂载，在服务器重启之后系统不会自动挂载，需要执行下面一步</p></li> <li><p>永久挂载</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token builtin class-name">echo</span> /dev/vdb1 /mnt ext4 defaults <span class="token number">0</span> <span class="token number">0</span> <span class="token operator">&gt;&gt;</span> /etc/fstab
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></li></ul> <h3 id="_2-5、查看挂载情况"><a href="#_2-5、查看挂载情况" class="header-anchor">#</a> 2.5、查看挂载情况</h3> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>lsblk -f
+
+结果输出如下：
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sr0
+vda
+└─vda1 ext4   /     e2048966-750b-4795-a9a2-xxxxxx-1232 /
+vdb
+└─vdb1 ext4         cae8b62b-fde1-49f3-a6ad-csxxxxyyy-12 /opt/datas
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div></div> <footer class="page-edit" style="display:none;"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2021/8/2 下午6:46:03</span></div></footer> <!----> <!----> <!----></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><div class="kanbanniang" data-v-5775ee02><div class="banniang-container" style="display:;" data-v-5775ee02><div class="messageBox" style="right:68px;bottom:190px;display:none;" data-v-5775ee02>
+      欢迎来到Navy的小屋
+    </div> <div class="operation" style="right:90px;bottom:40px;display:;" data-v-5775ee02><i class="kbnfont kbn-ban-home ban-home" data-v-5775ee02></i> <i class="kbnfont kbn-ban-message message" data-v-5775ee02></i> <i class="kbnfont kbn-ban-close close" data-v-5775ee02></i> <a target="_blank" href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html" data-v-5775ee02><i class="kbnfont kbn-ban-info info" data-v-5775ee02></i></a> <i class="kbnfont kbn-ban-theme skin" style="display:none;" data-v-5775ee02></i></div> <canvas id="banniang" width="150" height="220" class="live2d" style="right:90px;bottom:-20px;opacity:0.9;" data-v-5775ee02></canvas></div> <div class="showBanNiang" style="display:none;" data-v-5775ee02>
+    看板娘
+  </div></div><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="https://qknavy.oss-cn-huhehaote.aliyuncs.com/%E9%9F%B3%E4%B9%90/%E5%BC%A0%E9%9B%A8%E7%94%9F%20-%20%E6%88%91%E7%9A%84%E6%9C%AA%E6%9D%A5%E4%B8%8D%E6%98%AF%E6%A2%A6%20%28Live%29.mp3" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:200px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="https://qknavy.oss-cn-huhehaote.aliyuncs.com/%E5%9B%BE%E7%89%87/%E6%88%91%E7%9A%84%E6%9C%AA%E6%9D%A5%E4%B8%8D%E6%98%AF%E6%A2%A6.jpg" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(https://qknavy.oss-cn-huhehaote.aliyuncs.com/%E5%9B%BE%E7%89%87/%E6%88%91%E7%9A%84%E6%9C%AA%E6%9D%A5%E4%B8%8D%E6%98%AF%E6%A2%A6.jpg);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>我的未来不是梦</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>张雨生</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div></div></div>
+    <script src="/assets/js/app.59b9533f.js" defer></script><script src="/assets/js/3.a6b6d382.js" defer></script><script src="/assets/js/1.0683a2d2.js" defer></script><script src="/assets/js/27.db727cae.js" defer></script>
+  </body>
+</html>

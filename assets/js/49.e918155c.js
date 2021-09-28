@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[49],{560:function(t,e,s){"use strict";s.r(e);var n=s(4),l=Object(n.a)({},(function(){var t=this.$createElement,e=this._self._c||t;return e("ContentSlotsDistributor",{attrs:{"slot-key":this.$parent.slotKey}},[e("p",[this._v("RestTemplate发送请求，特别是在需要发送文件的时候怎么处理呢？")])])}),[],!1,null,null,null);e.default=l.exports}}]);
